@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    {% for childKey,child in form.children %}
+        {% if childKey != 'submit' and childKey != 'reset' %}
+            {{ form_row(child) }}
+        {% endif %}
+    {% endfor %}
+    <div class="float-right btn-group">
+        <div class="pr-2">{{ form_row(form.reset) }}</div> {# TODO dont over write padding #}
+        <div>{{ form_row(form.submit) }}</div>
+    </div>
+{{ form_end(form) }}

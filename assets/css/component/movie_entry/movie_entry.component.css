@@ -1,0 +1,14 @@
+.movie-picture {
+    min-width: 297px;
+    min-height: 440px;
+    max-width:297px;
+    max-height: 440px;
+}
+
+.list-movie-entry {
+}
+
+.list-movie-entry:hover {
+    cursor: pointer;
+    box-shadow: -1px 10px 29px 0px rgba(0,0,0,0.8);
+}

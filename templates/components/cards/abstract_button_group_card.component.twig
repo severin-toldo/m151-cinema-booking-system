@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ cardTitle }}</h5>
+        <p class="card-text">{{ cardText }}</p>
+        <br/>
+        <div class="btn-toolbar-vertical">
+            {% for btn in buttons %}
+                {% if security.anyPermission(btn.requiredPermissions, app.user) %}
+                    <a href="{{ path(btn.route, {from: twigUtils.getCurrentRoute() }) }}">
+                        <button type="button" class="{{ 'btn btn-' ~ btn.type }}">{{ btn.title }}</button>
+                    </a>
+                    <br/>
+                    <br/>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

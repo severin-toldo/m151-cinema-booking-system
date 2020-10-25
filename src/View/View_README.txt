@@ -1,0 +1,1 @@
+All View files are in the folder templates. It is required by the framework

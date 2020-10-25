@@ -1,0 +1,13 @@
+{% include 'layout.html.twig' %}
+<div class="pagination-centered">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <br/>
+            <h1>{{ pageTitle }}</h1>
+            <br/>
+            {% include 'components/dynamic_form.component.html.twig' with {'form': form} %}
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>

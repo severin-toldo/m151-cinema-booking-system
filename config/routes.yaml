@@ -1,0 +1,87 @@
+# main / top level pages
+index:
+    path: /
+    controller: App\Controller\components\RootRedirectComponentController::onInit
+
+movies:
+    path: movies
+    controller: App\Controller\MoviesController::onInit
+
+administration:
+    path: administration
+    controller: App\Controller\AdminController::onInit
+
+employee:
+    path: employee
+    controller: App\Controller\EmployeeController::onInit
+
+user_profile:
+    path: user_profile
+    controller: App\Controller\pages\UserProfileController::onInit
+
+# sub pages
+register:
+    path: register
+    controller: App\Controller\pages\RegisterPageController::register
+
+movie:
+    path: movie/{movieId}
+    controller: App\Controller\pages\MoviePageController::onInit
+
+login:
+    path: login
+    controller: App\Controller\pages\LoginPageController::login
+
+add_movie:
+    path: add_movie
+    controller: App\Controller\pages\add_edit\AddMoviePageController::onInit
+
+add_presentation:
+    path: add_presentation
+    controller: App\Controller\pages\add_edit\AddPresentationPageController::onInit
+
+edit_employee:
+    path: edit_employee
+    controller: App\Controller\pages\add_edit\EditEmployeePageController::onInit
+
+edit_user:
+    path: edit_user
+    controller: App\Controller\pages\add_edit\EditUserPageController::onInit
+
+user_reservations:
+    path: user_reservations
+    controller: App\Controller\pages\lists\UserReservationsListPageController::onInit
+
+all_reservations:
+    path: all_reservations
+    controller: App\Controller\pages\lists\AllReservationsListPageController::onInit
+
+employee_list:
+    path: employee_list
+    controller: App\Controller\pages\lists\EmployeeListPageController::onInit
+
+user_list:
+    path: user_list
+    controller: App\Controller\pages\lists\UserListPageController::onInit
+
+
+# utils
+test:
+    path: test
+    controller: App\Controller\TestController::onInit
+
+image_viewer:
+    path: image_viewer/{fileName}
+    controller: App\Controller\components\ImageViewerComponentController::onInit
+
+logout:
+    path: logout
+    controller: App\Controller\pages\LoginPageController::logout
+
+book_customer:
+    path: book_customer/{presentationId}
+    controller: App\Controller\modal\BookCustomerModalController::onInit
+
+book_internal:
+    path: book_internal/{presentationId}
+    controller: App\Controller\modal\BookInternalModalController::onInit

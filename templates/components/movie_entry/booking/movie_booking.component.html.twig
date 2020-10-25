@@ -1,0 +1,43 @@
+<h4>{% trans %} MOVIE.HALL {% endtrans %} {{ presentation.hall.id }}</h4>
+<br/>
+<br/>
+<br/>
+<div class="container" align="center">
+    <small class="text-muted">Leinwand</small>
+    <hr>
+</div>
+<br/>
+<br/>
+<br/>
+{% block javascripts %}
+<div class="container">
+    {% for seatrow in seatrows %}
+        <div class="row">
+            {{ seatrow.letter }}
+            {% for seat in seatrow.seats %}
+                <div class="col">
+                    {{ render(controller('App\\Controller\\components\\movie_entry\\booking\\SeatButtonComponentController::onInit', { 'nameId': seat.id, 'reserved': seat.reserved })) }}
+                </div>
+            {% endfor %}
+        </div>
+        <br/>
+    {% endfor %}
+    <br/>
+    {% if app.user %}
+        {% if security.internal(app.user) %}
+            <div class="float-right btn-group">
+                <div class="pr-2"><button type="button" class="book-btn btn btn-secondary" data-toggle="modal" data-target="#bookCustomerModal">Book for myself</button></div>  {# TODO dont over write padding #}
+                <div><button type="button" class="book-btn btn btn-primary" data-toggle="modal" data-target="#bookInternalModal">Book for Customer</button></div>
+            </div>
+            {{ render(controller('App\\Controller\\modal\\BookInternalModalController::onInit', { 'presentationId': presentation.id }))}}
+        {% else %}
+            <button type="button" class="float-right book-btn btn btn-primary" data-toggle="modal" data-target="#bookCustomerModal">Book</button>
+        {% endif %}
+        {{ render(controller('App\\Controller\\modal\\BookCustomerModalController::onInit', { 'presentationId': presentation.id })) }}
+    {% else %}
+        <button id="loggedoutUserBookBtn" type="button" class="float-right btn btn-primary">Book</button>
+        {{ encore_entry_script_tags('movie_booking_component_logged_out') }}
+    {% endif %}
+    {{ encore_entry_script_tags('movie_booking_component_logged_in') }}
+</div>
+{% endblock %}

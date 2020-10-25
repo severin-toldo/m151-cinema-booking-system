@@ -1,0 +1,1 @@
+import '../../../../css/component/movie_entry/booking/seat_button.component.css';

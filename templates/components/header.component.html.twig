@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-3">
+    <div class="container-fluid">
+        <a href="{{ path('index') }}"
+           class="navbar-brand mr-5">{% trans %} HEADER.TITLE {% endtrans %}</a>
+        <button type="button"
+                class="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarCollapse"
+             class="collapse navbar-collapse" >
+            <div class="navbar-nav">
+                <a href="{{ path('movies') }}"
+                   class="nav-item nav-link">Movies</a>
+
+                {% if app.user and security.role('admin', app.user) %}
+                    <a href="{{ path('administration') }}"
+                       class="nav-item nav-link">Administration</a>
+                {% endif %}
+
+                {% if app.user and security.internal(app.user) %}
+                    <a href="{{ path('employee') }}"
+                       class="nav-item nav-link">Employee</a>
+                {% endif %}
+            </div>
+            <div class="navbar-nav ml-auto">
+                {% if app.user %}
+                    <a type="button" class="nav-item nav-link" href="{{ path('user_profile') }}">{{ app.user.displayName }}</a>
+                    <a type="button" class="nav-item nav-link" href="{{ path('logout') }}">Logout</a>
+                {% else %}
+                    <a type="button" class="nav-item nav-link" href="{{ path('register') }}">Register</a>
+                    <a type="button" class="nav-item nav-link" href="{{ path('login') }}">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

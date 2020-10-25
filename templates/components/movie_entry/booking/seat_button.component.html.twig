@@ -1,0 +1,10 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('seat_button_component') }}
+{% endblock %}
+<input type="checkbox"
+       class="hidden-checkbox seat-btn"
+       data-seat-id="{{ nameId }}"
+       name="{{ nameId }}"
+       id="{{ nameId }}" {{ reserved ? 'disabled' }}>
+<label for="{{ nameId }}"
+       class="circle"></label>

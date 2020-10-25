@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="database refresh" type="DatabaseScript" editBeforeRun="true">
+    <script-file value="$PROJECT_DIR$/resources/2_stored_procedures_events.sql" />
+    <script-file value="$PROJECT_DIR$/resources/3_data.sql" />
+    <script-mode>FILE</script-mode>
+    <data-source id="0d4f4f6b-a13d-45a4-ab4b-40a7a060f6bb" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Creation Script" run_configuration_type="ShConfigurationType" />
+    </method>
+  </configuration>
+</component>

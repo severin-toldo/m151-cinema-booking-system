@@ -1,0 +1,6 @@
+.list-group-item:hover {
+    cursor: pointer;
+    box-shadow: -1px 10px 29px 0px rgba(0,0,0,0.8);
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vYWJzdHJhY3RfbGlzdF92aWV3LnBhZ2UuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtJQUNmLDhDQUE4QztBQUNsRCxDIiwiZmlsZSI6ImFic3RyYWN0X2xpc3Rfdmlld19wYWdlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5saXN0LWdyb3VwLWl0ZW06aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3gtc2hhZG93OiAtMXB4IDEwcHggMjlweCAwcHggcmdiYSgwLDAsMCwwLjgpO1xufSJdLCJzb3VyY2VSb290IjoiIn0=*/

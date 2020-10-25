@@ -1,0 +1,13 @@
+HEADER:
+  TITLE: Cinema Booking System
+  REGISTER: Register
+  LOGIN: Login
+  NAV:
+    MOVIES: Movies
+    ADMIN_ADMIN: Administration
+    ADMIN_USER: Emplyoee Administration
+
+MOVIE:
+  MINUTES: min
+  YEARS: Years
+  HALL: Hall

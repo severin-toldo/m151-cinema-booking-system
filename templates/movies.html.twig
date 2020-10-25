@@ -1,0 +1,11 @@
+{% include 'layout.html.twig' %}
+
+{% for movie in movies %}
+    <div>
+        {{ render(controller('App\\Controller\\components\\movie_entry\\MovieEntryComponentController::onInit', { 'movie': movie, 'isListView': true })) }}
+    </div>
+    <br/>
+    <br/>
+{% endfor %}
+
+

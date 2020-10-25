@@ -1,0 +1,22 @@
+.hidden-checkbox {
+    visibility:hidden;
+    opacity:0;
+}
+
+.circle {
+    border-radius: 18px;
+    height: 30px;
+    width: 30px;
+}
+
+input[type=checkbox] + label {
+    background-color: #dce0e3;
+}
+
+input[type=checkbox]:checked + label {
+    background-color: #007bff;
+}
+
+input[type=checkbox]:disabled + label {
+    background-color: #74b1f2;
+}

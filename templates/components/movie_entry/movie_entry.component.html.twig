@@ -1,0 +1,73 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('movie_entry_component') }}
+{% endblock %}
+{% block javascripts %}
+    {% if isListView %}
+        {{ encore_entry_script_tags('movie_entry_list_component') }}
+    {% else %}
+        {{ encore_entry_script_tags('movie_entry_component') }}
+    {% endif %}
+{% endblock %}
+<div data-movie-id="{{ movie.id }}"
+     class="{{ isListView ? 'movie-entry card bg-light container list-movie-entry' : 'movie-entry card bg-light container' }}">
+    <div class="card-body row">
+        {% if movie.imageFileName %}
+            <img class="col-sm movie-picture"
+                 src="{{ url('image_viewer', {'fileName': movie.imageFileName}) }}"
+                 alt="Movie Image" />
+        {% endif %}
+        <div class="col-sm">
+            <div class="row">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.name }}</h5>
+                        <p class="card-text"> {{ movie.description }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ml-1 mt-4 mr-5 d-inline-block">
+                    <svg class="bi bi-clock align-middle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+                        <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                    <span class="align-middle">&nbsp; {{ movie.length }} {% trans %} MOVIE.MINUTES {% endtrans %} </span>
+                </div>
+                <div class="mt-4 d-inline-block">
+                    <svg class="bi bi-person align-middle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    </svg>
+                    <span class="align-middle"> {{ movie.fskApproval }} {% trans %} MOVIE.YEARS {% endtrans %} </span>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            {% if isListView == false and presentations is not empty %}
+                <div class="ml-1 row">
+                    {% for presentation in presentations %}
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio"
+                                   id="{{ 'presentationRadio' ~ presentation.id }}"
+                                   name="customRadioInline1"
+                                   class="custom-control-input presentationRadio"
+                                   data-presentation-id="{{ presentation.id }}"
+                                   {{ selectedPresentationId is not empty and selectedPresentationId == presentation.id ? 'checked'}}>
+                            <label class="custom-control-label"
+                                   for="{{ 'presentationRadio' ~ presentation.id }}">{{  presentation.startTime | date("H:i / d.m.Y") }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <br/>
+                <br/>
+                <div id="movie-booking"
+                     class="row">
+                    {% for presentation in presentations %}
+                        {% if selectedPresentationId == presentation.id %}
+                            {{ render(controller('App\\Controller\\components\\movie_entry\\booking\\MovieBookingComponentController::onInit', { 'presentation': presentation })) }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
