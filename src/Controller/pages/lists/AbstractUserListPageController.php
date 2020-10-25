@@ -17,4 +17,8 @@ abstract class AbstractUserListPageController extends AbstractListPageController
     protected function isClickable(): bool {
         return true;
     }
+
+    protected function headerDisplayText(): string {
+        return 'Firstname, Lastname';
+    }
 }

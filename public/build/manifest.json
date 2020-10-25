@@ -13,6 +13,7 @@
   "build/runtime.js": "/build/runtime.js",
   "build/seat_button_component.css": "/build/seat_button_component.css",
   "build/seat_button_component.js": "/build/seat_button_component.js",
+  "build/vendors~abstract_list_view_page.js": "/build/vendors~abstract_list_view_page.js",
   "build/vendors~abstract_list_view_page~layout~movie_booking_component_logged_out~movie_entry_component~movi~b505c613.js": "/build/vendors~abstract_list_view_page~layout~movie_booking_component_logged_out~movie_entry_component~movi~b505c613.js",
   "build/vendors~abstract_list_view_page~movie_booking_component_logged_out~movie_entry_list_component.js": "/build/vendors~abstract_list_view_page~movie_booking_component_logged_out~movie_entry_list_component.js"
 }

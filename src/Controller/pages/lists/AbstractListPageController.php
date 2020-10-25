@@ -20,6 +20,7 @@ abstract class AbstractListPageController extends AbstractController {
             'items' => $this->getListData(),
             'isClickable' => $this->isClickable(),
             'onClickRoute' => $this->onClickRoute(),
+            'headerDisplayText' => $this->headerDisplayText()
         ]);
     }
 
@@ -30,6 +31,10 @@ abstract class AbstractListPageController extends AbstractController {
     /**
      * Default values which can be overwritten
      */
+
+    protected function headerDisplayText(): string {
+        return '';
+    }
 
     protected function isClickable(): bool {
         return false;
