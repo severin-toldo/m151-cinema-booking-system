@@ -79,4 +79,14 @@ class CommonUtils {
     public static function formatDateISO8601(DateTime $dateTime): void {
         $dateTime->format(DateTime::ISO8601);
     }
+
+    public static function resolveSlave(): string {
+        $num = rand(0, 100);
+
+        if ($num % 2 == 0) {
+            return 'slave1';
+        } else {
+            return 'slave2';
+        }
+    }
 }

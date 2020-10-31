@@ -7,6 +7,7 @@ namespace App\Controller\pages\lists;
 
 use App\Entity\ReservationEntity;
 use App\Model\Permission;
+use App\Utils\CommonUtils;
 
 class AllReservationsListPageController extends AbstractListPageController {
 
@@ -17,7 +18,7 @@ class AllReservationsListPageController extends AbstractListPageController {
     protected function getListData(): array {
         return $this
             ->getDoctrine()
-            ->getRepository(ReservationEntity::class)
+            ->getRepository(ReservationEntity::class, CommonUtils::resolveSlave())
             ->findAll();
     }
 

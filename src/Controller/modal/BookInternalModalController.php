@@ -7,6 +7,7 @@ namespace App\Controller\modal;
 use App\Entity\UserEntity;
 use App\Model\Role;
 use App\Model\UserChoice;
+use App\Utils\CommonUtils;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormInterface;
 
@@ -27,7 +28,7 @@ class BookInternalModalController extends AbstractBookModalController {
     protected function getModalForm(): FormInterface {
         $users = $this
             ->getDoctrine()
-            ->getRepository(UserEntity::class)
+            ->getRepository(UserEntity::class, CommonUtils::resolveSlave())
             ->findAll();
 
         $choices = [];

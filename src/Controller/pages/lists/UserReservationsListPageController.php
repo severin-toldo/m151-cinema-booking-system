@@ -5,6 +5,7 @@ namespace App\Controller\pages\lists;
 
 
 use App\Entity\ReservationEntity;
+use App\Utils\CommonUtils;
 
 class UserReservationsListPageController extends AbstractListPageController {
 
@@ -15,7 +16,7 @@ class UserReservationsListPageController extends AbstractListPageController {
     protected function getListData(): array {
         return $this
             ->getDoctrine()
-            ->getRepository(ReservationEntity::class)
+            ->getRepository(ReservationEntity::class, CommonUtils::resolveSlave())
             ->findBy(['user' => $this->getUser()]);
     }
 

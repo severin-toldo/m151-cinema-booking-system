@@ -8,6 +8,7 @@ use App\Entity\HallEntity;
 use App\Entity\MovieEntity;
 use App\Entity\PresentationEntity;
 use App\Model\Permission;
+use App\Utils\CommonUtils;
 use App\Validator\Constraints\IsValidPresentationTime;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -46,12 +47,12 @@ class AddPresentationPageController extends AbstractAddPageController {
 
         $halls = $this
             ->getDoctrine()
-            ->getRepository(HallEntity::class)
+            ->getRepository(HallEntity::class, CommonUtils::resolveSlave())
             ->findAll();
 
         $movies = $this
             ->getDoctrine()
-            ->getRepository(MovieEntity::class)
+            ->getRepository(MovieEntity::class, CommonUtils::resolveSlave())
             ->findAll();
 
         return $this->getDefaultFormBuilder($presentation)

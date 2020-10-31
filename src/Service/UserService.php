@@ -6,6 +6,7 @@ namespace App\Service;
 
 use App\Entity\UserEntity;
 use App\Model\Role;
+use App\Utils\CommonUtils;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -215,7 +216,7 @@ class UserService {
      */
     private function getUsersByRole(string $role): array {
         $users = $this->em
-            ->getRepository(UserEntity::class)
+            ->getRepository(UserEntity::class, CommonUtils::resolveSlave())
             ->findAll();
 
         $usersByRole = [];

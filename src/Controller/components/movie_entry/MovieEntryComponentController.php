@@ -6,6 +6,7 @@ namespace App\Controller\components\movie_entry;
 
 use App\Entity\MovieEntity;
 use App\Entity\PresentationEntity;
+use App\Utils\CommonUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -28,7 +29,7 @@ class MovieEntryComponentController extends AbstractController {
     private function onInitSingleView(MovieEntity $movie): Response {
         $presentations = $this
             ->getDoctrine()
-            ->getRepository(PresentationEntity::class)
+            ->getRepository(PresentationEntity::class, CommonUtils::resolveSlave())
             ->findBy(
                 array('movie' => $movie, 'valid' => true),
                 array('startTime' => 'ASC')

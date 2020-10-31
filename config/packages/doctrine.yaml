@@ -1,22 +1,59 @@
 doctrine:
     dbal:
-        # url: '%env(resolve:DATABASE_URL)%'
-        dbname:         m151_cinema_booking_system
-        host:           127.0.0.1
-        port:           3306
-        user:           YOUR_USER
-        password:       'YOUR_PASSWORD'
-        driver:         pdo_mysql
-        server_version: 'YOUR_SERVER_VERSION'
+        default_connection: default
+        connections:
+            default:
+                driver: 'pdo_mysql'
+                host: '127.0.0.1'
+                port: '3306'
+                dbname: 'm151_cinema_booking_system'
+                user: 'root'
+                password: '!24Zoro24!'
+                charset: 'UTF8'
+            slave1:
+                driver: 'pdo_mysql'
+                host: '127.0.0.1'
+                port: '3306'
+                dbname: 'm151_cinema_booking_system_slave_1'
+                user: 'root'
+                password: '!24Zoro24!'
+                charset: 'UTF8'
+            slave2:
+                driver: 'pdo_mysql'
+                host: '127.0.0.1'
+                port: '3306'
+                dbname: 'm151_cinema_booking_system_slave_2'
+                user: 'root'
+                password: '!24Zoro24!'
+                charset: 'UTF8'
 
     orm:
-        auto_generate_proxy_classes: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
-        auto_mapping: true
-        mappings:
-            App:
-                is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+        default_entity_manager: default
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    App:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
+                        alias: App
+            slave1:
+                connection: slave1
+                mappings:
+                    App:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
+                        alias: App
+            slave2:
+                connection: slave2
+                mappings:
+                    App:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
+                        alias: App
