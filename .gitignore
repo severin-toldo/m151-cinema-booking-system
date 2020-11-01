@@ -285,7 +285,7 @@ $RECYCLE.BIN/
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 /public/images/
-# config/packages/doctrine.yaml
+/public/build/
 .idea/runConfigurations/Creation_Script.xml
 DatabaseUpdater.bat
 DatabaseUpdater.bat
