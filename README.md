@@ -28,9 +28,9 @@ The `doctrine.yaml` structure is predefined for a Master / Slave setup.
 
 **Please change the `config/packages/doctrine.yaml` to fit your needs / setup.**
 
-### Setup for Master / Slave Setup
+### Master / Slave Setup
 
-1) Create a databases (example sql in `resources/1_db_ddl.sql`) on all Servers
+1) Create a database (example sql in `resources/1_db_ddl.sql`) on your Master Server
 
 2) Add `Server-Id = 1` and `Log-bin=mysql-bin` to your Master MySQL Servers config files (ex. `mysql.ini`, `my.cnf`)
 
@@ -52,9 +52,9 @@ The `doctrine.yaml` structure is predefined for a Master / Slave setup.
 
 11) Make sure the slaves replicated the master correctly
 
-### Setup for single database Setup
+### Single Database Setup
 
-1) Create a databases (example sql in `resources/1_db_ddl.sql`) on your Server
+1) Create a database (example sql in `resources/1_db_ddl.sql`) on your Server
 
 2) Test Doctrine configuration: `php bin/console doctrine:query:sql "SELECT 1"`
 
