@@ -14,11 +14,13 @@
 
 2) `cd path/to/project`
 
-3) `composer install`
+3) Please change the `config/packages/doctrine.yaml` to fit your needs / setup.
 
-4) `npm install`
+4) `composer install`
 
-5) `npm run dev`
+5) `npm install`
+
+6) `npm run dev`
 
 
 ## 3) Setup Doctrine and Database
