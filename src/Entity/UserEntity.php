@@ -32,14 +32,14 @@ class UserEntity implements UserInterface {
     private int $id;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(name="first_name", type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\NotNull()
      */
     private string $firstName;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(name="last_name", type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\NotNull()
      */

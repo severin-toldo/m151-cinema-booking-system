@@ -23,7 +23,7 @@
 
 ## 3) Setup Doctrine and Database
 
-This project can work with multiple SQL Servers (Master / Slave setup) or with a single Database.
+This project works with multiple SQL Servers, a (Master / Slave) Setup.
 The `doctrine.yaml` structure is predefined for a Master / Slave setup.
 
 **Please change the `config/packages/doctrine.yaml` to fit your needs / setup.**
@@ -51,18 +51,6 @@ The `doctrine.yaml` structure is predefined for a Master / Slave setup.
 10) Execute file `resources/3_data.sql` in your Master database
 
 11) Make sure the slaves replicated the master correctly
-
-### Single Database Setup
-
-1) Create a database (example sql in `resources/1_db_ddl.sql`) on your Server
-
-2) Test Doctrine configuration: `php bin/console doctrine:query:sql "SELECT 1"`
-
-8) Create entity tables: `bin/console doctrine:schema:update --force`
-
-9) Execute file `resources/2_stored_procedures_events.sql` in your database
-
-10) Execute file `resources/3_data.sql` in your database
 
 
 ## 4) Run the project:

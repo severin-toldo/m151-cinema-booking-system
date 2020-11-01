@@ -451,6 +451,10 @@ INSERT INTO security_permission (id, name, description) VALUES
 INSERT INTO security_role (id, name) VALUES
 (1, 'admin'),(2, 'employee');
 
+-- fix
+ALTER TABLE user CHANGE firstName first_name VARCHAR(255);
+ALTER TABLE user CHANGE lastName last_name VARCHAR(255);
+
 INSERT INTO user (id, first_name, last_name, phonenumber, email, password) VALUES
 (1, 'admin', 'admin', null, 'admin@admin.com', '$argon2id$v=19$m=65536,t=4,p=1$/pjamQrADmy8c8roq2QB/Q$911mVK13KXaWxWOcuJi4F9x90O/ijSnshc4JeVHIjTo'),
 (2, 'employee', 'employee', null, 'employee@employee.com', '$argon2id$v=19$m=65536,t=4,p=1$vOLFI/k6gKOJunjY54rDeQ$7TaWKEeKXJEBhIHuO1WPxqVIxj7QuJalQMJG1wTWQUU'),
