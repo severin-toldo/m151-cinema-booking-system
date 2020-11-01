@@ -4,6 +4,7 @@
 ## 1) Requirements:
 
 - [composer](https://getcomposer.org/) installed
+- [npm](https://www.npmjs.com/) installed
 - MySql Server installed and running
 
 
@@ -15,28 +16,53 @@
 
 3) `composer install`
 
+4) `npm install`
+
+5) `npm run dev`
+
 
 ## 3) Setup Doctrine and Database
 
-1) Open file `config/packages/doctrine.yaml`
+This project can work with multiple SQL Servers (Master / Slave setup) or with a single Database.
+The `doctrine.yaml` structure is predefined for a Master / Slave setup.
 
-2) replace `YOUR_USER` with your user (ex. root)
+**Please change the `config/packages/doctrine.yaml` to fit your needs / setup.**
 
-3) replace `YOUR_PASSWORD` with your password (ex. 1234)
+# Setup for Master / Slave Setup
 
-4) replace `YOUR_SERVER_VERSION` with your server version (run `mysql -u root -p` in your terminal to find out server version)
+1) Create a databases (example sql in `resources/1_db_ddl.sql`) on all Servers
 
-5) save file
+2) Add `Server-Id = 1` and `Log-bin=mysql-bin` to your Master MySQL Servers config files (ex. `mysql.ini`, `my.cnf`)
 
-6) Execute file `resources/1_db_ddl.sql` on mysql server
+3) Add `Server-Id = YOUR_SLAVE_ID` to your Slave MySQL Servers config files (ex. `mysql.ini`, `my.cnf`)
 
-7) Test Doctrine configuration: `php bin/console doctrine:query:sql "SELECT 1"`
+4) Execute `CHANGE MASTER TO MASTER_HOST= 'YOUR_MASTER_HOST', MASTER_PORT=3306, MASTER_USER='YOUR_MASTER_USER', MASTER_PASSWORD='YOUR_MASTER_PASSWORD';` on your Slave MySQL Servers
+
+5) Execute `START SLAVE;` on your Slave MySQL Servers
+
+6) Execute `show slave status\G;` on your Slave MySQL Servers. Check if connection was successful
+
+7) Test Doctrine configuration: `php bin/console doctrine:query:sql "SELECT 1" --connection=MASTER_OR_SLAVE_CONNECTION`
+
+8) Create entity tables (only on Master): `bin/console doctrine:schema:update --force`
+
+9) Execute file `resources/2_stored_procedures_events.sql` in your Master database
+
+10) Execute file `resources/3_data.sql` in your Master database
+
+11) Make sure the slaves replicated the master correctly
+
+# Setup for single database Setup
+
+1) Create a databases (example sql in `resources/1_db_ddl.sql`) on your Server
+
+2) Test Doctrine configuration: `php bin/console doctrine:query:sql "SELECT 1"`
 
 8) Create entity tables: `bin/console doctrine:schema:update --force`
 
-9) Execute file `resources/2_stored_procedures_events.sql` in database
+9) Execute file `resources/2_stored_procedures_events.sql` in your database
 
-10) Execute file `resources/3_data.sql` in database
+10) Execute file `resources/3_data.sql` in your database
 
 
 ## 4) Run the project:
