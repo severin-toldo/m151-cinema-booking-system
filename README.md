@@ -28,7 +28,7 @@ The `doctrine.yaml` structure is predefined for a Master / Slave setup.
 
 **Please change the `config/packages/doctrine.yaml` to fit your needs / setup.**
 
-# Setup for Master / Slave Setup
+### Setup for Master / Slave Setup
 
 1) Create a databases (example sql in `resources/1_db_ddl.sql`) on all Servers
 
@@ -52,7 +52,7 @@ The `doctrine.yaml` structure is predefined for a Master / Slave setup.
 
 11) Make sure the slaves replicated the master correctly
 
-# Setup for single database Setup
+### Setup for single database Setup
 
 1) Create a databases (example sql in `resources/1_db_ddl.sql`) on your Server
 
